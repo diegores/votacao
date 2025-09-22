@@ -1,0 +1,78 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:votacao;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+    hikari:
+      maximum-pool-size: 50
+      minimum-idle: 10
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+  jpa:
+    hibernate:
+      ddl-auto: update
+      format_sql: true
+    show-sql: true
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 100
+        order_inserts: true
+        order_updates: true
+        batch_versioned_data: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  cache:
+    type: simple
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,httptrace,threaddump,heapdump
+  endpoint:
+    health:
+      show-details: always
+    metrics:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    web:
+      server:
+        request:
+          autotime:
+            enabled: true
+    distribution:
+      percentiles:
+        http.server.requests: 0.5, 0.9, 0.95, 0.99
+      slo:
+        http.server.requests: 10ms, 50ms, 100ms, 200ms, 500ms
+
+logging:
+  level:
+    org.hibernate.SQL: INFO  # Reduced from DEBUG for production readiness
+    org.hibernate.type.descriptor.sql.BasicBinder: WARN  # Reduced from TRACE
+    com.example.votacao: INFO
+    com.example.votacao.application: INFO  # Application services
+    com.example.votacao.infrastructure.web: INFO  # Controllers
+    com.example.votacao.infrastructure.external: INFO  # External services
+    root: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/votacao.log
+  logback:
+    rollingpolicy:
+      max-file-size: 100MB
+      max-history: 30
+      total-size-cap: 1GB

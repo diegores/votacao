@@ -1,0 +1,30 @@
+-- Sample data for demonstration purposes
+-- This file will be executed on application startup
+
+-- Insert sample members
+INSERT INTO members (id, cpf, name) VALUES 
+('550e8400-e29b-41d4-a716-446655440001', '12345678901', 'João Silva'),
+('550e8400-e29b-41d4-a716-446655440002', '98765432109', 'Maria Santos'),
+('550e8400-e29b-41d4-a716-446655440003', '45678912345', 'Pedro Oliveira'),
+('550e8400-e29b-41d4-a716-446655440004', '78912345678', 'Ana Costa'),
+('550e8400-e29b-41d4-a716-446655440005', '32165498712', 'Carlos Ferreira')
+ON CONFLICT (cpf) DO NOTHING;
+
+-- Insert sample agendas
+INSERT INTO agendas (id, title, description, created_at, status) VALUES 
+('660e8400-e29b-41d4-a716-446655440001', 
+ 'Aprovação do Orçamento Anual', 
+ 'Votação para aprovação do orçamento da cooperativa para o próximo ano fiscal.',
+ CURRENT_TIMESTAMP,
+ 'CLOSED'),
+('660e8400-e29b-41d4-a716-446655440002',
+ 'Construção de Nova Sede',
+ 'Proposta para construção de uma nova sede administrativa da cooperativa.',
+ CURRENT_TIMESTAMP,
+ 'CLOSED'),
+('660e8400-e29b-41d4-a716-446655440003',
+ 'Mudança de Horário de Funcionamento',
+ 'Proposta para alteração do horário de funcionamento dos serviços.',
+ CURRENT_TIMESTAMP,
+ 'CLOSED')
+ON CONFLICT (id) DO NOTHING;
