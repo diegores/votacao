@@ -19,7 +19,7 @@ import java.util.Map;
 @Tag(name = "CPF Generator", description = "Utility APIs for generating valid Brazilian CPFs for testing and development purposes")
 public class CpfGeneratorController {
     
-    @GetMapping("/generate")
+    @GetMapping("/v1/generate")
     @Operation(
         summary = "Generate a valid CPF", 
         description = """

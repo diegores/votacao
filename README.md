@@ -80,29 +80,29 @@ The API will start on `http://localhost:8080`
 ## 📚 API Documentation
 
 ### Agendas
-- `POST /api/agendas` - Create new agenda
-- `GET /api/agendas` - List all agendas
-- `GET /api/agendas/{id}` - Get specific agenda
-- `POST /api/agendas/{id}/voting-session` - Open voting session
-- `GET /api/agendas/{id}/result` - Get voting results
-- `GET /api/agendas/voting-sessions/open` - List open voting sessions
+- `POST /api/agendas/v1` - Create new agenda
+- `GET /api/agendasv1` - List all agendas
+- `GET /api/agendas/v1/{id}` - Get specific agenda
+- `POST /api/agendas/v1/{id}/voting-session` - Open voting session
+- `GET /api/agendas/v1/{id}/result` - Get voting results
+- `GET /api/agendas/v1/voting-sessions/open` - List open voting sessions
 
 ### Members
-- `POST /api/members` - Register new member
-- `GET /api/members` - List all members
-- `GET /api/members/{id}` - Get member by ID
-- `GET /api/members/cpf/{cpf}` - Get member by CPF
+- `POST /api/members/v1` - Register new member
+- `GET /api/members/v1` - List all members
+- `GET /api/members/v1/{id}` - Get member by ID
+- `GET /api/members/v1/cpf/{cpf}` - Get member by CPF
 
 ### Voting
-- `POST /api/agendas/{id}/votes` - Submit individual vote
+- `POST /api/agendas/v1/{id}/votes` - Submit individual vote
 
 ### Batch Voting (Performance Feature)
-- `POST /api/batch-voting/votes` - Submit multiple votes in batch (up to 10,000)
+- `POST /api/batch-voting/v1/votes` - Submit multiple votes in batch (up to 10,000)
 
 ### CPF Validation (Bonus Feature)
-- `GET /api/cpf/validate/{cpf}` - Validate CPF and check voting eligibility
-- `GET /api/cpf-generator/generate` - Generate valid CPF for testing
-- `GET /api/cpf-generator/samples` - Get sample valid CPFs
+- `GET /api/cpf/v1/validate/{cpf}` - Validate CPF and check voting eligibility
+- `GET /api/cpf-generator/v1/generate` - Generate valid CPF for testing
+- `GET /api/cpf-generator/v1/samples` - Get sample valid CPFs
 
 ## 🧪 Testing
 
